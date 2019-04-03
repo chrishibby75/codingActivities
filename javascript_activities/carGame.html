@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Car Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script> -->
+</head>
+<body>
+    <h1>Car Adventures!</h1>
+    <h2>Type "h" for honk, "d" to drive to work, "w" to drive around the world and "t" to get a tuneup.</h2>
+    <h3>Open the console to see the car stats.</h3>
+
+    <script type="text/javascript">
+    car = {
+        make: "Chevy",
+        model: "Malibu",
+        color: "Gunmetal gray",
+        mileage: 3000,
+        isWorking: true,
+
+        driveToWork: function() {
+            alert("Old Mileage: " + car.mileage);
+            car.mileage = car.mileage + 8;
+            alert("New Mileage: " + car.mileage);
+        },
+
+        driveAroundTheWorld: function() {
+            alert("Old Mileage: " + car.mileage);
+            car.mileage = car.mileage + 24000;
+            alert("New Mileage: " + car.mileage);
+            alert("Your car needs a tuneup!");
+            car.isWorking = false;
+        },
+
+        getTuneup: function() {
+            alert("You car is working!");
+            car.isWorking = true;
+        },
+
+        honk: function() {
+            alert("Honk! Honk!");
+        }
+    }
+
+    function reWriteStats() {
+        console.log("Make: " + car.make);
+        console.log("Model: " + car.model);
+        console.log("Color: " + car.color);
+        console.log("Mileage: " + car.mileage);
+        console.log("The car is working: " + car.isWorking);
+        console.log("=======================================");
+    }
+
+    document.onkeyup = function(event) {
+        var letter = event.key.toLowerCase();
+
+        if(letter === 'h') {
+            car.honk();
+            reWriteStats();
+        }
+
+        if(letter === 'd') {
+            car.driveToWork();
+            reWriteStats();
+        }
+
+        if(letter === 'w') {
+            car.driveAroundTheWorld();
+            reWriteStats();
+        }
+
+        if(letter === 't') {
+            car.getTuneup();
+            reWriteStats();
+        }
+    }; 
+    </script>
+    
+</body>
+</html>

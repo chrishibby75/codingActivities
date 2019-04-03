@@ -1,0 +1,22 @@
+body {
+    background: wheat;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+    font-size: 19px;
+}
+
+#buttons {
+    margin-top: 20px;
+}
+
+#image-holder {
+    margin-top: 20px;
+}

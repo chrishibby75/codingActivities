@@ -1,0 +1,39 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Trigger Random</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="text-center">Click the Button to Generate Your Lottery Number</h1>
+        <div class="text-center">
+            <button id="random-button" class="btn btn-primary btn-lg"><h1><span class="fa fa-question"></span></h1></button>
+        </div>
+    </div>
+    <h1 class="text-center" id="random-number"></h1>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#random-button').on('click', function() {
+            var lottoNumber = "";
+            for(i = 1; i <= 9; i++) {
+                var random = Math.floor(Math.random() * 9) +1;
+                lottoNumber = random + lottoNumber;
+            }
+            $('#random-number').prepend("<hr><br>" + "Your special lottery number is " + lottoNumber);
+        });
+    });
+    </script>
+</body>
+</html>

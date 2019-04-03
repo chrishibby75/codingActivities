@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Multiple AJAX</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+<body>
+    <div id='poster'></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+        $.ajax({
+            url: "https://www.omdbapi.com/?t=the+long+kiss+goodnight&y=&plot=full&apikey=bf1cc516",
+            method: "GET"
+        }).then(function(response) {
+            console.log(response);
+        });
+
+        $.ajax({
+            url: "https://www.omdbapi.com/?t=step+brothers&y=&plot=full&apikey=bf1cc516",
+            method: "GET"
+        }).then(function(response) {
+            console.log(response);
+        });
+
+        $.ajax({
+            url: "https://www.omdbapi.com/?t=the+hangover&y=&plot=full&apikey=bf1cc516",
+            method: "GET"
+        }).then(function(response){
+            console.log(response);
+        });
+
+        </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            background: wheat;
+            text-align:center
+        }
+
+        #question-div {
+            color: darkblue;
+        }
+
+    </style>
+    
+</head>
+<body>
+    <div id="question-div">
+        <h1>Do You Like Steak?</h1>
+    </div>
+    <div id="button-div">
+        <button id="yes-button">Yes</button>
+        <button id="no-button">No</button>
+    </div>
+    <div id="answer-div"></div>
+    <div id="pic-div"></div>
+
+    <script type="text/javascript">
+    document.getElementById('yes-button').addEventListener('click', yesFunction);
+    function yesFunction() {
+        document.getElementById('answer-div').innerHTML = "<h1 style='color: red;'>Here is a juicy Porterhouse steak for you to enjoy!</h1>";
+        document.getElementById('pic-div').innerHTML = "<img src='https://images-na.ssl-images-amazon.com/images/I/71bwwTLdVfL._SX355_.jpg'>";
+    }
+
+    document.getElementById('no-button').addEventListener('click', noFunction);
+    function noFunction() {
+        document.getElementById('answer-div').innerHTML = "<h1 style='color: violet;'>Have some tofu, you candyass sissy!</h1>";
+        document.getElementById('pic-div').innerHTML = "<img src='https://www.topweddingsites.com/wedding-blog/wp-content/uploads/2015/10/men-wearing-wedding-dresses.jpg'>";
+    }
+
+
+    </script>
+    
+</body>
+</html>

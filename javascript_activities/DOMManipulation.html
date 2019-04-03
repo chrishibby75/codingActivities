@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Manipulation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script> -->
+    <style>
+        .super {
+            text-align: center;
+            font-size:xx-large;
+            font-weight: bolder;
+            color: green;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="empty-div"></div>  
+
+    <script type="text/javascript">
+    var targetDiv = document.getElementById("empty-div");
+
+    targetDiv.textContent = "Hello friend!";
+
+    var newDiv = document.createElement("div");
+
+    newDiv.textContent = "How's it hanging?";
+
+    targetDiv.appendChild(newDiv);
+
+    newDiv.setAttribute("class", "super");
+
+
+    </script>
+    
+</body>
+</html>

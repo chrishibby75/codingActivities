@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Scope</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script> -->
+</head>
+<body>
+
+    <script type="text/javascript">
+    var name = "Peleke";
+    var age = 92;
+    var languages = ["English", "Norwegian", "Spanish"];
+
+    var firstFunction = function firstFunction(message) {
+        console.log(message + name + " is " + age + ".");
+    };
+    firstFunction("Oh my! ");
+
+
+    var secondFunction = function secondFunction(name) {
+        console.log(name + " is " + age + ".") ;
+    };
+
+    secondFunction("Julius");
+
+    function thirdFunction(age) {
+        return name + " is " + age + "."; 
+    }
+    console.log(thirdFunction(100));
+
+    function report(str) {
+        console.log(name + " likes " + str + ".");
+    }
+    languages.forEach(report);  
+
+    languages.forEach(function report(str) {
+        console.log(str);
+    });
+    </script>
+    
+</body>
+</html>

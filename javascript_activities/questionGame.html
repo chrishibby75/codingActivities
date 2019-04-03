@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script> -->
+</head>
+<body>
+    <h1>Question Game</h1>
+    <p id="score"></p>
+    <p id="question"></p>
+
+    <script type="text/javascript">
+
+    // VARIABLES
+    // ==========================================================================
+    var questions = [
+        {q:"The sky is blue?", a:"t"},
+        {q:"Water is wet?", a:"t"},
+        {q:"Trump is a great President?", a:"f"},
+        {q:"Baseball is the best sport?", a:"t"},
+        {q:"Working at Marriott is fun?", a:"f"}
+    ];
+        
+        var score = 0;
+        var questionIndex = 0;
+    
+
+    // FUNCTIONS
+    // ==============================================================================
+    function renderQuestion() {
+        if(questionIndex <= (questions.length - 1)) {
+            document.querySelector("#question").innerHTML = questions[questionIndex].q;
+        }
+        else {
+            document.querySelector("#question").innerHTML = "Game Over!";
+            document.querySelector("#score").innerHTML = "Final Score: " + score + " out of " + questions.length;
+        }
+    }
+
+    function updateScore() {
+        document.querySelector("#score").innerHTML = "Score: " + score;
+    }
+
+    
+
+    // MAIN PROCESS
+    // ==============================================================================
+    renderQuestion();
+    updateScore();
+
+    document.onkeyup = function(event) {
+
+        if(questionIndex === questions.length) {
+            return;
+        }
+
+        var userInput = event.key.toLocaleLowerCase();
+
+        if((userInput === "t") || (userInput === "f")) {
+            if(userInput === questions[questionIndex].a) {
+                alert("Correct!");
+                score++;
+                updateScore();
+            }
+            else {
+                alert("Wrong!");
+            }
+
+            questionIndex++
+            renderQuestion();
+        }
+    };
+
+    
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Timeouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Timeouts!</h1>
+    <button id="window-cancel">Window Alert Cancel</button>
+    <br><br>
+    <button id="start">Button Timeout Start</button>
+    <button id="cancel">Button Timeout Cancel</button>
+
+    <script type="text/javascript">
+        // Variable that will hold the button alert's timeout when it's clicked
+        var delayButtonAlert;
+        // Timeouts in JavaScript
+        // Set out window alert to run one second after the function is called.
+        var windowTimeout = setTimeout(function () {
+            alert("Alert #1");
+        }, 1000);
+
+        // Start onclick
+        $('#start').on('click', function () {
+            delayButtonAlert = setTimeout(function () {
+                alert("Alert #2");
+            }, 3000);
+        });
+
+        $('#cancel').on('click', function () {
+            clearTimeout(delayButtonAlert);
+        });
+
+        $('#window-cancel').on('click', function () {
+            clearTimeout(windowTimeout);
+        }); 
+    </script>
+</body>
+
+</html>

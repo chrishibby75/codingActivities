@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script> -->
+</head>
+<body>
+    <script type="text/javascript">
+    var gandalf = {
+        "real name": "Gandalf",
+        "age": 1100,
+        "race": "Maia",
+        "haveRetirementPlan": true,
+        "aliases": [
+            "Greyhame",
+            "Stormcrow",
+            "Mithrandir",
+            "Gandalf the grey",
+            "Gandalf the white"
+        ],
+        "weapon": "wizard staff"
+    };
+
+    for (i = 0; i < gandalf.aliases.length; i++){
+        alert("My name is " + gandalf.aliases[i] + "!");
+    };
+
+    if(gandalf.haveRetirementPlan) {
+        var ageProperty = "age";
+        var years = gandalf[ageProperty];
+        alert("My 401k has been accruing interest for " + years + " years!");
+    }
+
+    alert("My real name is " + gandalf["real name"] + " . Nice to meet you.");
+
+    alert("My designation is " + gandalf.designation + ".");
+    </script>
+    
+</body>
+</html>

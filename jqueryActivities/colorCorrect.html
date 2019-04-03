@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Correct Color Picker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script> -->
+    <!-- Bootstrap File -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Correct Color Picker</h1>
+        <p>Pick the <b>color</b> of the word shown from the list below it.</p>
+        <div class="card">
+
+            <div class="card-header">
+                <h3 class="card-title">
+                    <span id="rand-target-color"></span>
+                </h3>
+            </div>
+
+            <div class="card-body">
+                <ul class="list-unstyled" id="color-picker"></ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var colorsOfText = [];
+
+            var targetColor;
+            var targetColorOfText;
+            var userAnswer;
+
+            var colors = [
+                "brown", "blue", "magenta", "teal", "coral", "black"
+            ];
+
+                function randColor() {
+                    targetColor = colors[Math.floor(Math.random() * colors.length)];
+                    $('#rand-target-color').text(targetColor);
+                
+               
+                    targetColorOfText = colors[Math.floor(Math.random() * colors.length)];
+                    $('#rand-target-color').css('color', targetColorOfText);
+                }
+                
+
+                function createColorPicker() {
+
+                    colors.sort(function() {
+                        return 0.5 - Math.random();
+                    });
+
+                    for(i = 0; i < colors.length; i++) {
+                        colorsOfText.push(colors[i]);
+                    }
+
+                    colorsOfText.sort(function() {
+                        return 0.5 - Math.random();
+                    });
+
+                    for(i = 0; i < colors.length; i++) {
+                        var holder = document.createElement('li');
+                        $('#color-picker').append(holder);
+                        $(holder).attr('id', colors[i]).text(colors[i]);
+                        $(holder).css('color', colorsOfText[i]);
+                    }
+                }
+
+                function clear() {
+                    $('#rand-target-color').empty();
+                    $('#color-picker').empty();
+                    colorsOfText = [];
+                }
+
+                function reset() {
+                    clear();
+                    randColor();
+                    createColorPicker();
+                }
+
+                $('#color-picker').click(function(event) {
+                    userAnswer = event.target.id;
+
+                    if(userAnswer === targetColorOfText) {
+                        alert("You Win!");
+                        reset();
+                    }
+                    else {
+                        alert("You Lose!");
+                        reset();
+                    }
+                });
+                reset();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+</head>
+
+<body>
+    <p>After clicking, go to the Firebase Database to see the click counter go up.</p>
+    <p>
+        While clicking, put this html file to the left, and show the firebase database on the right to show how firebase
+        is real time!
+    </p>
+
+    <button id="click-button">Click Me!</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+      apiKey: "AIzaSyAJS4YQWU5DmESeYueG1qH1NGkjv3DncEY",
+      authDomain: "fir-click-counter-7cdb9.firebaseapp.com",
+      databaseURL: "https://fir-click-counter-7cdb9.firebaseio.com",
+      storageBucket: "fir-click-counter-7cdb9.appspot.com"
+    };
+
+        firebase.initializeApp(config);
+
+        var database = firebase.database();
+        var clickCounter = 0;
+
+        $('#click-button').on('click', function () {
+            clickCounter++;
+
+            database.ref().set({
+                clickCount: clickCounter
+            });
+        });
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>To Do App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+            #todo-item {
+              font-weight: 700;
+              font-size: 2em;
+            }
+          </style>
+      
+</head>
+<body>
+    <h1>My To Do's!</h1>
+
+    <form>
+        <span id="todo-item">To Do Item: <input type="text" id="to-do"><input id="add-to-do" value="Add Item" type="submit"></span>
+    </form>
+    <hr>
+    <div id="to-dos"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        var toDoCount = 0;
+        $('#add-to-do').on('click', function(event) {
+            event.preventDefault();
+
+            var toDoTask = $('#to-do').val().trim();
+
+            var toDoItem = $('<p>');
+            toDoItem.attr('id', 'item-' + toDoCount);
+            toDoItem.text(toDoTask);
+
+            var toDoClose = $('<button>');
+            toDoClose.attr('data-to-do', toDoCount);
+            toDoClose.addClass('checkbox');
+            toDoClose.text('✓');
+
+            toDoItem = toDoItem.prepend(toDoClose);
+            $('#to-dos').append(toDoItem);
+            $('#to-do').val("");
+            toDoCount++;
+        });
+
+        $(document.body).on('click', '.checkbox', function() {
+            var todoNumber = $(this).attr('data-to-do');
+
+            $('#item-' + todoNumber).remove();
+        });
+    </script>
+</body>
+</html>

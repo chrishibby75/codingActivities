@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign Up Today</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<style type="text/css">
+
+</style>    
+</head>
+<body>
+
+    <div class="container">
+        <br>
+        <div class="jumbotron">
+            <h1 class="text-center">Sign Up Today!</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card card-default">
+                    <div class="card-header">
+                        New Member Sign Up
+                    </div>
+                    <div class="card-body">
+
+                        <form role="form">
+                            <div class="form-group row">
+                                <label for="name-input">Name:</label>
+                                <input class="form-control" id="name-input" type="text">
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="email-input">Email:</label>
+                                <input class="form-control" id="email-input" type="email">
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="age-input">Age:</label>
+                                <input class="form-control" id="age-input" type="number">
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="comment-input">How did you hear about us?</label>
+                                <input class="form-control" id="comment-input" rows="5">
+                            </div>
+                            <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card card-default">
+                    <div class="card-header">
+                        Most Recent Member
+                    </div>
+                    <div class="card-body" id="recent-member">
+                        <h2 id="name-display">Heather Midgley</h2>
+                        <h4 id="email-display">Email: hmidge@youknowme.com</h4>
+                        <h4 id="age-display">Age: 31</h4>
+                        <p id="comment-display">Why does my husband keep using me in his examples?</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyCDgrlSm9LRRzRlDy2qCqMXGYf4tBS6E8M",
+          authDomain: "mostrecentuser-bf904.firebaseapp.com",
+          databaseURL: "https://mostrecentuser-bf904.firebaseio.com",
+          projectId: "mostrecentuser-bf904",
+          storageBucket: "mostrecentuser-bf904.appspot.com",
+          messagingSenderId: "585531719849"
+        };
+        firebase.initializeApp(config);
+
+        //create a variable to reference the database
+        var database = firebase.database();
+
+        //initial values
+
+        var name = "";
+        var email= "";
+        var age = 0;
+        var commment = "";
+
+        $('#add-user').on('click', function(event) {
+            event.preventDefault();
+            
+            name = $('#name-input').val().trim();
+            email = $('#email-input').val().trim();
+            age = $('#age-input').val().trim();
+            comment = $('#comment-input').val().trim();
+
+            database.ref().set({
+                name: name,
+                email: email,
+                age: age,
+                comment: comment
+            });
+        });
+
+        database.ref().on('value', function(snapshot) {
+
+            console.log(snapshot.val());
+            console.log(snapshot.val().name);
+            console.log(snapshot.val().email);
+            console.log(snapshot.val().age);
+            console.log(snapshot.val().comment);
+
+            $('#name-display').text(snapshot.val().name);
+            $('#email-display').text(snapshot.val().email);
+            $('#age-display').text(snapshot.val().age);
+            $('#comment-display').text(snapshot.val().comment);
+        }, function(errorObject) {
+            console.log("Errors handled: " + errorObject.code);
+        });
+
+      </script>   
+</body>
+</html>

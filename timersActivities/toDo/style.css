@@ -1,0 +1,45 @@
+body {
+    background: wheat;
+    color: rgb(133, 157, 189);
+    text-align: center;
+}
+
+h1 {
+    font-size: 43px;
+}
+
+input {
+    width: 50%;
+    margin: 10% 2%;
+    height: 32px;
+    font-size: 24px;
+}
+
+button {
+    height: 32px;
+    width: 60px;
+}
+
+#tasks {
+    background-color: antiquewhite;
+    width:60%;
+    height:400px;
+    overflow: auto;
+    margin: 0 auto;
+    color: rgb(133, 157, 189);
+  }
+
+  #tasks div {
+    border:1px solid black;
+    margin: 2%;
+    font-size: 32px;
+    padding:5%;
+    box-sizing: border-box;
+  }
+
+  #delete {
+    cursor:pointer;
+    float:right;
+    color:red;
+    font-weight: bold;
+  }

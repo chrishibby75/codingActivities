@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script> -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <style>
+            .jumbotron {
+                background: cornflowerblue;
+                color: white;
+            }
+            button {
+                width: 65px !important;
+                height: 80px !important;
+                margin: 10px !important;
+                color: black !important;
+            }
+            .card-header {
+                background: navy;
+                color: wheat;
+            }
+        </style>
+
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1 class="text-center">Number Guesser</h1>
+        <h2 class="text-center">See if you can guess the number the computer is thinking of.</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-mb-2">
+                    <h3 class="card-header">Computer Pick</h3>
+                    <div class="card-body text-center">
+                        <h1 id="computer-pick">???</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-mb-2">
+                    <h3 class="card-header">You Pick</h3>
+                    <div class="card-body text-center">
+                        <button id="button-1" class="btn btn-info btn-choice" value="1"><h1>1</h1></button>
+                        <button id="button-2" class="btn btn-info btn-choice" value="2"><h1>2</h1></button>
+                        <button id="button-3" class="btn btn-info btn-choice" value="3"><h1>3</h1></button>
+                        <button id="button-4" class="btn btn-info btn-choice" value="4"><h1>4</h1></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-mb-2">
+                    <h3 class="card-header">Result</h3>
+                    <div class="card-header text-center">
+                        <h1 id="result"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var computerPick = Math.floor(Math.random() * 4) +1;
+        var lockGame = false;
+
+        $('.btn-choice').on('click', function() {
+            if(lockGame !== true) {
+                userPick = $(this).val();
+                $('#computer-pick').text(computerPick);
+                if(parseInt(userPick) === computerPick) {
+                    $('#result').text("Your guess is correct! Gold star for you. Refresh to play again.");
+                    lockGame = true;
+                }
+                else {
+                    $('#result').text("Wrong. You suck at life. Refresh to play again.");
+                    lockGame = true;
+                }
+            }
+        });
+    });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bujumbura</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
+</head>
+
+<body>
+    <div class="city"></div>
+    <div class="wind"></div>
+    <div class="humidity"></div>
+    <div class="temp"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+    var searchWeather = function(city) {
+
+        var APIKey = "45ef57566ceb98d7262e74f088426fbd";
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
+            "q=" + city + "&units=imperial&appid=" + APIKey;
+            
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function(response) {
+                console.log(queryURL);
+                console.log(response);
+
+                $('.city').html("<h1>" + response.name + " Weather details</h1>");
+                $('.wind').html("Wind Speed: " + response.wind.speed);
+                $('.humidity').html("Humidity: " + response.main.humidity);
+                $('.temp').html("Temperature(F): " + response.main.temp); 
+
+                console.log("Wind Speed:" + response.wind.speed);
+                console.log("Humidity: " + response.main.humidity);
+                console.log("Temperature(F): " + response.main.temp);
+
+            });
+    };
+
+    searchWeather("Salt Lake City");
+    searchWeather("Raleigh");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <br>
+        <div class="jumbotron">
+            <h1 class="text-center">Sign Up Today!</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card card-default">
+                    <div class="card-header">
+                        New member signup
+                    </div>
+
+                    <div class="card-body">
+                        <form role="form">
+                            <div class="form-group row">
+                                <label for="name-input">Name:</label>
+                                <input class="form-control" id="name-input" type="text">
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="email-input">Email:</label>
+                                <input class="form-control" id="email-input" type="email">
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="age-input">Age:</label>
+                                <input class="form-control" id="age-input" type="number">
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="comment-input">How did you hear about us?</label>
+                                <textarea class="form-control" id="comment-input" rows="5"></textarea>
+                            </div>
+
+                            <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card card-default">
+                    <div class="card-header">
+                        Most Recent Member
+                    </div>
+                    <div class="card-body" id="recent-member">
+                        <h2 id="name-display">Chris Sale</h2>
+                        <h4 id="email-display">Email: pitcher@redsox.com</h4>
+                        <h4 id="age-display">Age: 31</h4>
+                        <p id="comment-display">I'm signing up because I'm the best pitcher in baseball.</p>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript">
+
+        $('#add-user').on('click', function(event) {
+            event.preventDefault();
+            
+            var name = $('#name-input').val().trim();
+            var email = $('#email-input').val().trim();
+            var age = $('#age-input').val().trim();
+            var comment = $('#comment-input').val().trim();
+
+            console.log(name);
+            console.log(email);
+            console.log(age);
+            console.log(comment);
+
+            $('#name-display').text(name);
+            $('#email-display').text(email);
+            $('#age-display').text(age);
+            $('#comment-display').text(comment);
+        });
+    </script>
+</body>
+
+</html>

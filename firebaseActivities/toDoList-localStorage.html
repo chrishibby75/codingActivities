@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Local Storage To Do List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+
+    <h1>To Do List Persisted with Local Storage</h1>
+    <form>
+        <span id="todo-item">To Do Item: <input id="to-do" type="text"><input id="add-todo" value="Add Item"
+                type="submit"></span>
+    </form>
+    <hr>
+    <div id="to-dos"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        function renderTodos(list) {
+            $('#to-dos').empty();
+
+            for (var i = 0; i < list.length; i++) {
+                var toDoItem = $('<p>');
+                toDoItem.text(list[i]);
+
+                var toDoClose = $('<button>');
+
+                toDoClose.attr('data-to-do', i);
+                toDoClose.addClass("checkbox");
+                toDoClose.text('✓');
+
+                toDoItem = toDoItem.prepend(toDoClose);
+                $('#to-dos').append(toDoItem);
+            }
+        }
+
+        $('#add-todo').on('click', function(event) {
+            event.preventDefault();
+
+                var todoTask = $('#to-do').val().trim();
+                list.push(todoTask);
+
+                renderTodos(list);
+
+                localStorage.setItem('todolist', JSON.stringify(list));
+
+                $('#to-do').val("")
+        });
+
+        $(document).on('click', '.checkbox', function() {
+            var toDoNumber = $(this).attr('data-to-do');
+
+            list.splice(toDoNumber, 1);
+
+            renderTodos(list);
+            localStorage.setItem('todolist', JSON.stringify(list));
+        });
+
+        var list = JSON.parse(localStorage.getItem('todolist'));
+
+        if(!Array.isArray(list)) {
+            list = [];
+        }
+
+        renderTodos(list);
+
+    </script>
+</body>
+
+</html>
